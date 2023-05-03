@@ -1,0 +1,38 @@
+#include <iostream>
+#include <graphics.h>
+void drawCircle(int centerX, int centerY, int radius, int color) {
+    int x = radius;
+    int y = 0;
+    int err = 0;
+    while (x >= y) {
+        putpixel(centerX + x, centerY + y, color);
+        putpixel(centerX + y, centerY + x, color);
+        putpixel(centerX - y, centerY + x, color);
+        putpixel(centerX - x, centerY + y, color);
+        putpixel(centerX - x, centerY - y, color);
+        putpixel(centerX - y, centerY - x, color);
+        putpixel(centerX + y, centerY - x, color);
+        putpixel(centerX + x, centerY - y, color);
+        if (err <= 0) {
+            y += 1;
+            err += 2*y + 1;
+        }
+        if (err > 0) {
+            x -= 1;
+            err -= 2*x + 1;
+        }
+    }
+}
+
+int main() {
+    initwindow(800, 600, "Olympic Rings Logo");
+
+    drawCircle(200, 200, 100, BLUE);
+    drawCircle(350, 200, 100, YELLOW);
+    drawCircle(500, 200, 100, WHITE);
+    drawCircle(275, 300, 100, GREEN);
+    drawCircle(425, 300, 100, RED);
+    getch();
+    closegraph();
+    return 0;
+}
