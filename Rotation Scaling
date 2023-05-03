@@ -1,0 +1,66 @@
+#include<iostream>
+#include<graphics.h>
+#include<math.h>
+using namespace std;
+int main()
+{
+    int gd=DETECT,gm,s;
+    initgraph(&gd,&gm,(char*)"");
+    cout<<"1.Translation\n2.Rotation\n3.Scaling  "<<endl;
+    cout<<"Selection:";
+    cin>>s;
+    switch(s)
+        {
+        case 1:
+            {   int x1=200,y1=150,x2=300,y2=250;
+                int tx=50,ty=50;
+                cout<<"Rectangle before translation"<<endl;
+                setcolor(3);
+                rectangle(x1,y1,x2,y2);
+                setcolor(4);
+                cout<<"Rectangle after translation"<<endl;
+                rectangle(x1+tx,y1+ty,x2+tx,y2+ty);
+                getch();
+                break;
+            }
+        case 2:
+            { int gd=DETECT,gm,x1,x2,y1,y2,x4,y4;
+initgraph(&gd,&gm,"C:\\Tc\\BGI");
+float angle=0,ang;
+cout<<"\nROTATION OF A LINE\n";
+cout<<"Enter the first coordinate of a line:\n";
+cin>>x1>>y1;
+cout<<"Enter the second coordinate of a line:";
+cin>>x2>>y2;
+line(x1,y1,x2,y2);
+cout<<"Enter the angle:";
+cin>>ang;
+angle=(ang*3.14)/180;
+setcolor(RED);
+x4=x2-(((x2-x1)*cos(angle))-((y2-y1)+sin(angle)));
+y4=y2-(((x2-x1)*sin(angle))+((y2-y1)*cos(angle)));
+line(x2,y2,x4,y4);
+getch();
+                break;
+}
+        case 3:
+            {
+                int x1=30,y1=30,x2=70,y2=70,y=2,x=2;
+                cout<<"Before scaling"<<endl;
+                setcolor(3);
+                rectangle(x1,y1,x2,y2);
+                cout<<"After scaling"<<endl;
+                setcolor(10);
+                rectangle(x1*x,y1*y,x2*x,y2*y);
+                getch();
+                break;
+}
+default:
+          {
+            cout<<"Invalid Selection"<<endl;
+            break;
+          }
+        }
+closegraph();
+    return 0;
+}
